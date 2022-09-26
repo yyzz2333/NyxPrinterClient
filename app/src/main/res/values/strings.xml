@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">printer-client</string>
+    <string name="main_ver">Version</string>
+    <string name="main_paper_out">Paper out</string>
+    <string name="main_text">Print text</string>
+    <string name="main_barcode">Print barcode</string>
+    <string name="main_qr_code">Print QR code</string>
+    <string name="main_pic">Print bitmap</string>
+    <string name="main_lbl">Print label</string>
+    <string name="main_lbl_learning">Label learning print</string>
+    <string name="main_scan">Scanner</string>
+    <string name="res_not_support">Current printer version is not support</string>
+</resources>

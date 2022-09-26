@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">printer-client</string>
+    <string name="main_ver">版本号</string>
+    <string name="main_paper_out">走纸</string>
+    <string name="main_text">文字</string>
+    <string name="main_barcode">条形码</string>
+    <string name="main_qr_code">二维码</string>
+    <string name="main_pic">图片</string>
+    <string name="main_lbl">标签</string>
+    <string name="main_lbl_learning">标签学习打印</string>
+    <string name="main_scan">扫码</string>
+    <string name="res_not_support">当前版本不支持</string>
+</resources>

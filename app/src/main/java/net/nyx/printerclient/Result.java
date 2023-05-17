@@ -6,101 +6,101 @@ public class Result {
         String s;
         switch (code) {
             case SdkResult.SDK_SENT_ERR:
-                s = "数据发送错误";
+                s = Utils.getApp().getString(R.string.result_sent_err);
                 break;
             case SdkResult.SDK_RECV_ERR:
-                s = "数据接收错误";
+                s = Utils.getApp().getString(R.string.result_recv_err);
                 break;
             case SdkResult.SDK_TIMEOUT:
-                s = "通讯超时";
+                s = Utils.getApp().getString(R.string.result_timeout);
                 break;
             case SdkResult.SDK_PARAM_ERR:
-                s = "数据参数错误";
+                s = Utils.getApp().getString(R.string.result_params_err);
                 break;
             case SdkResult.SDK_UNKNOWN_ERR:
-                s = "未知异常";
+                s = Utils.getApp().getString(R.string.result_unknown_err);
                 break;
             case SdkResult.DEVICE_NOT_CONNECT:
-                s = "设备未连接";
+                s = Utils.getApp().getString(R.string.result_device_not_conn);
                 break;
             case SdkResult.DEVICE_DISCONNECT:
-                s = "设备断开连接";
+                s = Utils.getApp().getString(R.string.result_device_disconnect);
                 break;
             case SdkResult.DEVICE_CONN_ERR:
-                s = "设备连接错误";
+                s = Utils.getApp().getString(R.string.result_conn_err);
                 break;
             case SdkResult.DEVICE_CONNECTED:
-                s = "设备已连接";
+                s = Utils.getApp().getString(R.string.result_device_connected);
                 break;
             case SdkResult.DEVICE_NOT_SUPPORT:
-                s = "设备不支持";
+                s = Utils.getApp().getString(R.string.result_device_not_support);
                 break;
             case SdkResult.DEVICE_NOT_FOUND:
-                s = "设备未找到";
+                s = Utils.getApp().getString(R.string.result_device_not_found);
                 break;
             case SdkResult.DEVICE_OPEN_ERR:
-                s = "设备打开错误";
+                s = Utils.getApp().getString(R.string.result_device_open_err);
                 break;
             case SdkResult.DEVICE_NO_PERMISSION:
-                s = "设备无权限";
+                s = Utils.getApp().getString(R.string.result_device_no_permission);
                 break;
             case SdkResult.BT_NOT_OPEN:
-                s = "蓝牙未打开";
+                s = Utils.getApp().getString(R.string.result_bt_not_open);
                 break;
             case SdkResult.BT_NO_LOCATION:
-                s = "定位未开启";
+                s = Utils.getApp().getString(R.string.result_bt_no_location);
                 break;
             case SdkResult.BT_NO_BONDED_DEVICE:
-                s = "无绑定设备";
+                s = Utils.getApp().getString(R.string.result_bt_no_bonded);
                 break;
             case SdkResult.BT_SCAN_TIMEOUT:
-                s = "蓝牙扫描超时";
+                s = Utils.getApp().getString(R.string.result_bt_scan_timeout);
                 break;
             case SdkResult.BT_SCAN_ERR:
-                s = "蓝牙扫描错误";
+                s = Utils.getApp().getString(R.string.result_bt_scan_err);
                 break;
             case SdkResult.BT_SCAN_STOP:
-                s = "蓝牙扫描停止";
+                s = Utils.getApp().getString(R.string.result_bt_scan_stop);
                 break;
             case SdkResult.PRN_COVER_OPEN:
-                s = "打印机仓盖未关闭";
+                s = Utils.getApp().getString(R.string.result_prn_cover_open);
                 break;
             case SdkResult.PRN_PARAM_ERR:
-                s = "打印参数错误";
+                s = Utils.getApp().getString(R.string.result_prn_params_err);
                 break;
             case SdkResult.PRN_NO_PAPER:
-                s = "打印机缺纸";
+                s = Utils.getApp().getString(R.string.result_prn_no_paper);
                 break;
             case SdkResult.PRN_OVERHEAT:
-                s = "打印机过热";
+                s = Utils.getApp().getString(R.string.result_prn_overheat);
                 break;
             case SdkResult.PRN_UNKNOWN_ERR:
-                s = "打印机未知异常";
+                s = Utils.getApp().getString(R.string.result_prn_unknown_err);
                 break;
             case SdkResult.PRN_PRINTING:
-                s = "打印机正在打印";
+                s = Utils.getApp().getString(R.string.result_prn_printing);
                 break;
             case SdkResult.PRN_NO_NFC:
-                s = "打印机无NFC标签";
+                s = Utils.getApp().getString(R.string.result_prn_no_nfc);
                 break;
             case SdkResult.PRN_NFC_NO_PAPER:
-                s = "打印机NFC标签没有剩余次数";
+                s = Utils.getApp().getString(R.string.result_nfc_no_paper);
                 break;
             case SdkResult.PRN_LOW_BATTERY:
-                s = "打印机低电量";
+                s = Utils.getApp().getString(R.string.result_prn_low_battery);
                 break;
             case SdkResult.PRN_LBL_LOCATE_ERR:
-                s = "标签定位失败";
+                s = Utils.getApp().getString(R.string.result_prn_locate_err);
                 break;
             case SdkResult.PRN_LBL_DETECT_ERR:
-                s = "标签纸检测错误";
+                s = Utils.getApp().getString(R.string.result_prn_detect_err);
                 break;
             case SdkResult.PRN_LBL_NO_DETECT:
-                s = "未检测到标签纸";
+                s = Utils.getApp().getString(R.string.result_prn_no_detect);
                 break;
             case SdkResult.PRN_UNKNOWN_CMD:
             case SdkResult.SDK_UNKNOWN_CMD:
-                s = "未知指令";
+                s = Utils.getApp().getString(R.string.result_unknown_cmd);
                 break;
             default:
                 s = "" + code;

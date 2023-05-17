@@ -42,14 +42,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected TextView tvLog;
 
     private static final int RC_SCAN = 0x99;
-    public static final String PRN_TEXT = "大江东去，浪淘尽，千古风流人物。\n" +
-            "故垒西边，人道是，三国周郎赤壁。\n" +
-            "乱石穿空，惊涛拍岸，卷起千堆雪。\n" +
-            "江山如画，一时多少豪杰。\n" +
-            "遥想公瑾当年，小乔初嫁了，雄姿英发。\n" +
-            "羽扇纶巾，谈笑间，樯橹灰飞烟灭。\n" +
-            "故国神游，多情应笑我，早生华发。\n" +
-            "人生如梦，一尊还酹江月。";
+    public static String PRN_TEXT;
     protected Button btn4;
     protected Button btnLbl;
     protected Button btnLblLearning;
@@ -66,6 +59,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         bindService();
         registerQscScanReceiver();
         Timber.plant(new Timber.DebugTree());
+        PRN_TEXT = getString(R.string.print_text);
     }
 
 

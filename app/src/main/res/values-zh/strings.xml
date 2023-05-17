@@ -10,4 +10,39 @@
     <string name="main_lbl_learning">标签学习打印</string>
     <string name="main_scan">扫码</string>
     <string name="res_not_support">当前版本不支持</string>
+
+    <string name="result_sent_err">数据发送错误</string>
+    <string name="result_recv_err">数据接收错误</string>
+    <string name="result_timeout">通讯超时</string>
+    <string name="result_params_err">数据参数错误</string>
+    <string name="result_unknown_err">未知异常</string>
+    <string name="result_device_not_conn">设备未连接</string>
+    <string name="result_device_disconnect">设备断开连接</string>
+    <string name="result_conn_err">设备连接错误</string>
+    <string name="result_device_connected">设备已连接</string>
+    <string name="result_device_not_support">设备不支持</string>
+    <string name="result_device_not_found">设备未找到</string>
+    <string name="result_device_open_err">设备打开错误</string>
+    <string name="result_device_no_permission">设备无权限</string>
+    <string name="result_bt_not_open">蓝牙未打开</string>
+    <string name="result_bt_no_location">定位未开启</string>
+    <string name="result_bt_no_bonded">无绑定设备</string>
+    <string name="result_bt_scan_timeout">蓝牙扫描超时</string>
+    <string name="result_bt_scan_err">蓝牙扫描错误</string>
+    <string name="result_bt_scan_stop">蓝牙扫描停止</string>
+    <string name="result_prn_cover_open">打印机仓盖未关闭</string>
+    <string name="result_prn_params_err">打印参数错误</string>
+    <string name="result_prn_no_paper">打印机缺纸</string>
+    <string name="result_prn_overheat">打印机过热</string>
+    <string name="result_prn_unknown_err">打印机未知异常</string>
+    <string name="result_prn_printing">打印机正在打印</string>
+    <string name="result_prn_no_nfc">打印机无NFC标签</string>
+    <string name="result_nfc_no_paper">打印机NFC标签没有剩余次数</string>
+    <string name="result_prn_low_battery">打印机低电量</string>
+    <string name="result_prn_locate_err">标签定位失败</string>
+    <string name="result_prn_detect_err">标签纸检测错误</string>
+    <string name="result_prn_no_detect">未检测到标签纸</string>
+    <string name="result_unknown_cmd">未知指令</string>
+
+    <string name="print_text">大江东去，浪淘尽，千古风流人物。\n故垒西边，人道是，三国周郎赤壁。\n乱石穿空，惊涛拍岸，卷起千堆雪。\n江山如画，一时多少豪杰。\n遥想公瑾当年，小乔初嫁了，雄姿英发。\n羽扇纶巾，谈笑间，樯橹灰飞烟灭。\n故国神游，多情应笑我，早生华发。\n人生如梦，一尊还酹江月。</string>
 </resources>

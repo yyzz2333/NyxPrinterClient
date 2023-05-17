@@ -20,90 +20,99 @@ interface IPrinterService {
     int printText(String text, in PrintTextFormat textFormat);
 
     /**
-     * 打印文字
+     * Print text
      *
-     * @param text       文本内容
-     * @param textFormat 文字样式
-     * @param textWidth  最大文字宽度, <384px
-     * @param align      最大文字宽度相对于384px打印纸的对齐方式, 默认0. 0--居左, 1--居中, 2--居右
-     * @return 打印结果
+     * @param text       text content
+     * @param textFormat text format
+     * @param textWidth  maximum text width, <384px
+     * @param align      The alignment of the maximum text width relative to the 384px printing paper
+     *                   The default is 0. 0--Align left, 1--Align center, 2--Align right
+     * @return Print result
      */
     int printText2(String text, in PrintTextFormat textFormat, int textWidth, int align);
 
     /**
-     * 打印条码
+     * Print barcode
      *
-     * @param content      条码内容
-     * @param width        条码宽度
-     * @param height       条码高度
-     * @param textPosition 文字位置, 默认0. 0--不打印文字, 1--文字在条码上方, 2--文字在条码下方, 3--条码上下方均打印
-     * @param align        对齐方式, 默认0. 0--居左, 1--居中, 2--居右
-     * @return 打印结果
+     * @param content      barcode content
+     * @param width        barcode width, px
+     * @param height       barcode height, px
+     * @param textPosition barcode content text position, the default is 0.
+     *                     0--don't print barcode content
+     *                     1--content above the barcode
+     *                     2--content below the barcode
+     *                     3--text print both the top and bottom of the barcode
+     * @param align        alignment, the default is 0. 0--Align left, 1--Align center, 2--Align right
+     * @return Print result
      */
     int printBarcode(String content, int width, int height, int textPosition, int align);
 
     /**
-     * 打印二维码
+     * Print QR code
      *
-     * @param content 二维码内容
-     * @param width   二维码宽度
-     * @param height  二维码高度
-     * @param align   对齐方式, 默认0. 0--居左, 1--居中, 2--居右
-     * @return 打印结果
+     * @param content QRCode content
+     * @param width   QRCode width, px
+     * @param height  QRCode height, px
+     * @param align   alignment, the default is 0. 0--Align left, 1--Align center, 2--Align right
+     * @return Print result
      */
     int printQrCode(String content, int width, int height, int align);
 
     /**
-     * 打印图片
+     * Print bitmap
      *
-     * @param bitmap 图片bitmap对象
-     * @param type   打印方式, 默认0. 0--黑白化图片, 1--灰度图片, 适合色彩丰富图片
-     * @param align  对齐方式, 默认0. 0--居左, 1--居中, 2--居右
-     * @return 打印结果
+     * @param bitmap Android bitmap object
+     * @param type   printer render type, the default is 0.
+     *               0--black and white bitmap
+     *               1--grayscale bitmap, suitable for rich color images
+     * @param align  alignment, the default is 0. 0--Align left, 1--Align center, 2--Align right
+     * @return Print result
      */
     int printBitmap(in Bitmap bitmap, int type, int align);
 
     /**
-     * 定位下一张标签
+     * Locate the next label
      *
-     * @param labelHeight 标签纸高度, 单位px
-     * @param labelGap    标签纸间距, 单位px
-     * @return 定位结果
+     * @param labelHeight label paper height, px
+     * @param labelGap    label paper gap, px
+     * @return Result
      */
     int labelLocate(int labelHeight, int labelGap);
 
     /**
-     * 标签打印结束, 根据设置参数自动走纸至撕纸处
+     * Label printing ends, paper automatically moves to the tear-off position.
+     * This method must appear in pairs with {@link #labelLocate}
      *
-     * @return 接口结果
+     * @return Result
      */
     int labelPrintEnd();
 
     /**
-     * 自动定位标签
+     * Auto locate label. This method only can be called on the system that has performed
+     * label learning by {@link #labelDetectAuto}
      *
-     * @return 定位结果
+     * @return Result
      */
     int labelLocateAuto();
 
     /**
-     * 标签自动检测
+     * Label learning by automatic label detection. This method will start label learning
      *
-     * @return 接口结果
+     * @return Result
      */
     int labelDetectAuto();
 
     /**
-     * 已进行标签学习
+     * Label learning has been performed
      *
-     * @return 接口结果
+     * @return Result
      */
     boolean hasLabelLearning();
 
     /**
-     * 清除标签学习结果
+     * Clear label learning data
      *
-     * @return 接口结果
+     * @return Result
      */
     int clearLabelLearning();
 

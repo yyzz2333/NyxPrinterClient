@@ -10,15 +10,23 @@ NyxPrinterClient
 - 红外线扫码
 ###
 
-## AIDL  
+## 打印SDK集成
 Demo使用AIDL进行集成。有关AIDL，请参考 [https://developer.android.com/guide/components/aidl](https://developer.android.com/guide/components/aidl)
 
-主要文件说明
-- net.nyx.printerservice.print.IPrinterService.aidl —— the aidl interface for all printer functions
-- net.nyx.printerservice.print.PrintTextFormat.aidl —— the aidl bean class to set the print text style
-- net.nyx.printerservice.print.PrintTextFormat.java —— the java bean class to set the print text style
+### 主要文件说明
+- [net.nyx.printerservice.print.IPrinterService.aidl](app/src/main/aidl/net/nyx/printerservice/print/IPrinterService.aidl) —— the aidl interface for all printer functions
+- [net.nyx.printerservice.print.PrintTextFormat.aidl](app/src/main/aidl/net/nyx/printerservice/print/PrintTextFormat.aidl) —— the aidl bean class to set the print text style
+- [net.nyx.printerservice.print.PrintTextFormat.java](app/src/main/java/net/nyx/printerservice/print/PrintTextFormat.java) —— the java bean class to set the print text style
 
-绑定AIDL service
+### 集成
+1. 在项⽬中添加上述三个⽂件且不能修改包路径和包名
+2. Android12在`AndroidManifest.xml`添加标签以适配 `android 11 package visibility`
+```xml
+<queries>
+    <package android:name="net.nyx.printerservice"/>
+</queries>
+```
+3. 绑定AIDL service
 ```
 private IPrinterService printerService;
 private ServiceConnection connService = new ServiceConnection() {
@@ -48,11 +56,12 @@ private void unbindService() {
     unbindService(connService);
 }
 ```
+4. 使用`printerService`调用 AIDL接口中定义的⽅法进行打印
 
 ## Printer
 
 ### 打印文本/图片/条码
-PrintTextFormat: java bean类，设置打印文本样式，包括文本大小、文本样式、文本对齐方式、文本字库等
+[PrintTextFormat](app/src/main/java/net/nyx/printerservice/print/PrintTextFormat.java): java bean类，设置打印文本样式，包括文本大小、文本样式、文本对齐方式、文本字库等
 ```
 try {
     PrintTextFormat textFormat = new PrintTextFormat();
@@ -64,6 +73,18 @@ try {
     if (ret == 0) {
         paperOut();
     }
+} catch (RemoteException e) {
+    e.printStackTrace();
+}
+```
+
+自定义打印字库，**路径需要设置为公有路径**，字库放在`assets`目录或应用私有目录将不会生效
+```
+try {
+    PrintTextFormat textFormat = new PrintTextFormat();
+    textFormat.setFont(5);
+    textFormat.setPath("/sdcard/TLAsc.ttf");
+    int ret = printerService.printText(text, textFormat);
 } catch (RemoteException e) {
     e.printStackTrace();
 }
@@ -135,6 +156,8 @@ private void printLabelLearning() {
 ### 打印结果
 所有打印接口都返回int类型结果，参考 [SdkResult.java](app/src/main/java/net/nyx/printerclient/SdkResult.java) 对打印结果进行相关处理
 
+## 扫码
+
 ### 摄像头扫描
 只需要启动系统活动即可获得内置相机扫描仪。该方式无法自定义扫码界面。
 
@@ -191,5 +214,9 @@ private void unregisterQscReceiver() {
 }
 ```
 
+## NFC
+NFC使用Android通用NFC模块，具体介绍可参考[Android NFC](https://developer.android.google.cn/guide/topics/connectivity/nfc)
 
-
+读卡相关可以参考以下项目
+- [MifareClassicTool](https://github.com/ikarus23/MifareClassicTool)
+- [EMV-NFC-Paycard-Enrollment](https://github.com/devnied/EMV-NFC-Paycard-Enrollment)

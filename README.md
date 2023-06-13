@@ -6,15 +6,23 @@ NyxPrinterClient
 The demo for Android Studio has full functionality, such as printing text, printing barcodes, printing qr code, printing pictures and scanning. Please import project by Android Studio to get the detailed instructions for use.
 ###
 
-## AIDL  
+## Printer SDK integration
 Nyx Printer is using AIDL integration. About AIDL, please refer to [https://developer.android.com/guide/components/aidl](https://developer.android.com/guide/components/aidl)
 
-Integration file description
-- net.nyx.printerservice.print.IPrinterService.aidl —— the aidl interface for all printer functions
-- net.nyx.printerservice.print.PrintTextFormat.aidl —— the aidl bean class to set the print text style
-- net.nyx.printerservice.print.PrintTextFormat.java —— the java bean class to set the print text style
+### Integration file description
+- [net.nyx.printerservice.print.IPrinterService.aidl](app/src/main/aidl/net/nyx/printerservice/print/IPrinterService.aidl) —— the aidl interface for all printer functions
+- [net.nyx.printerservice.print.PrintTextFormat.aidl](app/src/main/aidl/net/nyx/printerservice/print/PrintTextFormat.aidl) —— the aidl bean class to set the print text style
+- [net.nyx.printerservice.print.PrintTextFormat.java](app/src/main/java/net/nyx/printerservice/print/PrintTextFormat.java) —— the java bean class to set the print text style
 
-Bind printer AIDL service
+### Integration
+1. Add the above three files to the project and cannot modify the package path and package name
+2. Add query tag in `AndroidManifest.xml` to adapt `android 11 package visibility` for Android 12 platform
+```xml
+<queries>
+    <package android:name="net.nyx.printerservice"/>
+</queries>
+```
+3. Bind printer AIDL service
 ```
 private IPrinterService printerService;
 private ServiceConnection connService = new ServiceConnection() {
@@ -60,6 +68,18 @@ try {
     if (ret == 0) {
         paperOut();
     }
+} catch (RemoteException e) {
+    e.printStackTrace();
+}
+```
+
+For custom print font, **font path needs to be set as a public path**. Font placed in `assets` directory or application private directory will not take effect
+```
+try {
+    PrintTextFormat textFormat = new PrintTextFormat();
+    textFormat.setFont(5);
+    textFormat.setPath("/sdcard/TLAsc.ttf");
+    int ret = printerService.printText(text, textFormat);
 } catch (RemoteException e) {
     e.printStackTrace();
 }
@@ -132,6 +152,7 @@ private void printLabelLearning() {
 ### Printer result
 All the printer interfaces will return the integer result, please refer to [SdkResult.java](app/src/main/java/net/nyx/printerclient/SdkResult.java)
 
+## Scanner
 ### Camera scanner
 Just start a system activity to get built-in camera scanner. The capture surface cannot be customized.
 
@@ -188,5 +209,10 @@ private void unregisterQscReceiver() {
 }
 ```
 
+## NFC
+NFC uses the Android general NFC module, the specific introduction can refer to [Android NFC](https://developer.android.google.cn/guide/topics/connectivity/nfc)
 
+Card reading can refer to the following projects
+- [MifareClassicTool](https://github.com/ikarus23/MifareClassicTool)
+- [EMV-NFC-Paycard-Enrollment](https://github.com/devnied/EMV-NFC-Paycard-Enrollment)
 
